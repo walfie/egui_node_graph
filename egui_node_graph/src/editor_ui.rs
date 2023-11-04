@@ -809,7 +809,9 @@ where
                     .user_data
                     .titlebar_color(ui, self.node_id, self.graph, user_state)
                     .unwrap_or_else(|| background_color.lighten(0.8)),
+                fill_texture_id: Default::default(),
                 stroke: Stroke::NONE,
+                uv: Rect::ZERO,
             });
 
             let body_rect = Rect::from_min_size(
@@ -818,9 +820,11 @@ where
             );
             let body = Shape::Rect(RectShape {
                 rect: body_rect,
-                rounding: Rounding::none(),
+                rounding: Rounding::ZERO,
                 fill: background_color,
+                fill_texture_id: Default::default(),
                 stroke: Stroke::NONE,
+                uv: Rect::ZERO,
             });
 
             let bottom_body_rect = Rect::from_min_size(
@@ -831,7 +835,9 @@ where
                 rect: bottom_body_rect,
                 rounding,
                 fill: background_color,
+                fill_texture_id: Default::default(),
                 stroke: Stroke::NONE,
+                uv: Rect::ZERO,
             });
 
             let node_rect = titlebar_rect.union(body_rect).union(bottom_body_rect);
@@ -840,7 +846,9 @@ where
                     rect: node_rect.expand(1.0),
                     rounding,
                     fill: Color32::WHITE.lighten(0.8),
+                    fill_texture_id: Default::default(),
                     stroke: Stroke::NONE,
+                    uv: Rect::ZERO,
                 })
             } else {
                 Shape::Noop
